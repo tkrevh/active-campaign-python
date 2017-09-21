@@ -7,4 +7,3 @@ api_key = '<your api_key>'
 
 ac = ActiveCampaign(base_url,  api_key)
 print(ac.api('account/view'))
-

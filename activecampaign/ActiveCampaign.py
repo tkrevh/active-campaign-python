@@ -1,8 +1,15 @@
+from importlib import import_module
 from .Connector import Connector
 
 # formatters for making life easier, don't you want it that way?
 fmt_params = '{}&api_action={}&api_output={}&{}'.format
 fmt_noparams = '{}&api_action={}&api_output={}'.format
+
+
+def get_mod(cls, parent):
+    source_module = import_module(".{}".format(cls), parent)
+    class1 = getattr(source_module, cls)  # get Subscriber
+    return class1
 
 
 class ActiveCampaign(Connector):
@@ -46,11 +53,8 @@ class ActiveCampaign(Connector):
 
         # "subscriber" becomes "Subscriber"
         class1 = '{}'.format(component.capitalize())
-        source_module = __import__(
-            class1, globals(), locals(), [], 0)  # import Subscriber
-        class1 = getattr(source_module, class1)  # get Subscriber
+        class1 = get_mod(class1, 'activecampaign')
         class1 = class1(self.URL, self.APIKEY)  # Subscriber()
-        # subscriber.view()
 
         if method == 'list':
             # reserved word

@@ -21,13 +21,13 @@ test_requirements = [
 
 setup(
     name='active-campaign-python',
-    version='0.5.5',
+    version='0.6.0',
     description="Python ActiveCampaign API client",
     long_description=readme,
     author="Dennis Durling",
     author_email='djdtahoe@gmail.com',
     url='https://github.com/tahoe/active-campaign-python',
-    packages=[ 'activecampaign', ],
+    packages=['activecampaign', ],
     package_dir={'activecampaign': 'activecampaign'},
     include_package_data=True,
     install_requires=requirements,
@@ -46,4 +46,3 @@ setup(
         'Programming Language :: Python :: 3.5',
     ]
 )
-
