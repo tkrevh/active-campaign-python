@@ -1,7 +1,10 @@
-from .ActiveCampaign import ActiveCampaign
-import json
-import urllib2, urllib
-import datetime
+from .ActiveCampaign import (
+    ActiveCampaign,
+    fmt_params,
+    fmt_noparams
+)
+import requests as rq
+
 
 class Message(ActiveCampaign):
 
@@ -11,84 +14,139 @@ class Message(ActiveCampaign):
         ActiveCampaign.__init__(self, url, api_key)
 
     def add(self, params, post_data):
-        request_url = '%s&api_action=message_add&api_output=%s' % (self.url, self.output)
-        post_data = urllib.urlencode(post_data)
-        req = urllib2.Request(request_url, post_data)
-        response = json.loads(urllib2.urlopen(req).read())
-        return response
+        rq_url = fmt_noparams(
+            self.url,
+            'message_add',
+            self.output
+        )
+        response = rq.get(rq_url, data=post_data)
+        return response.json()
 
-    def delete_list(self, params, post_data = {}):
-        request_url = '%s&api_action=message_delete_list&api_output=%s&%s' % (self.url, self.output, params)
-        response = json.loads(urllib2.urlopen(request_url).read())
-        return response
+    def delete_list(self, params, post_data={}):
+        rq_url = fmt_params(
+            self.url,
+            'message_delete_list',
+            self.output,
+            params
+        )
+        response = rq.get(rq_url)
+        return response.json()
 
-    def delete(self, params, post_data = {}):
-        request_url = '%s&api_action=message_delete&api_output=%s&%s' % (self.url, self.output, params)
-        response = json.loads(urllib2.urlopen(request_url).read())
-        return response
+    def delete(self, params, post_data={}):
+        rq_url = fmt_params(
+            self.url,
+            'message_delete',
+            self.output,
+            params
+        )
+        response = rq.get(rq_url)
+        return response.json()
 
     def edit(self, params, post_data):
-        request_url = '%s&api_action=message_edit&api_output=%s' % (self.url, self.output)
-        post_data = urllib.urlencode(post_data)
-        req = urllib2.Request(request_url, post_data)
-        response = json.loads(urllib2.urlopen(req).read())
-        return response
+        rq_url = fmt_noparams(
+            self.url,
+            'message_edit',
+            self.output
+        )
+        response = rq.get(rq_url, data=post_data)
+        return response.json()
 
-    def list_(self, params, post_data = {}):
-        request_url = '%s&api_action=message_list&api_output=%s&%s' % (self.url, self.output, params)
-        response = json.loads(urllib2.urlopen(request_url).read())
-        return response
+    def list_(self, params, post_data={}):
+        rq_url = fmt_params(
+            self.url,
+            'message_list',
+            self.output,
+            params
+        )
+        response = rq.get(rq_url)
+        return response.json()
 
     def template_add(self, params, post_data):
-        request_url = '%s&api_action=message_template_add&api_output=%s' % (self.url, self.output)
-        post_data = urllib.urlencode(post_data)
-        req = urllib2.Request(request_url, post_data)
-        response = json.loads(urllib2.urlopen(req).read())
-        return response
+        rq_url = fmt_noparams(
+            self.url,
+            'message_template_add',
+            self.output
+        )
+        response = rq.get(rq_url, data=post_data)
+        return response.json()
 
-    def template_delete_list(self, params, post_data = {}):
-        request_url = '%s&api_action=message_template_delete_list&api_output=%s&%s' % (self.url, self.output, params)
-        response = json.loads(urllib2.urlopen(request_url).read())
-        return response
+    def template_delete_list(self, params, post_data={}):
+        rq_url = fmt_params(
+            self.url,
+            'message_template_delete_list',
+            self.output,
+            params
+        )
+        response = rq.get(rq_url)
+        return response.json()
 
-    def template_delete(self, params, post_data = {}):
-        request_url = '%s&api_action=message_template_delete&api_output=%s&%s' % (self.url, self.output, params)
-        response = json.loads(urllib2.urlopen(request_url).read())
-        return response
+    def template_delete(self, params, post_data={}):
+        rq_url = fmt_params(
+            self.url,
+            'message_template_delete',
+            self.output,
+            params
+        )
+        response = rq.get(rq_url)
+        return response.json()
 
     def template_edit(self, params, post_data):
-        request_url = '%s&api_action=message_template_edit&api_output=%s' % (self.url, self.output)
-        post_data = urllib.urlencode(post_data)
-        req = urllib2.Request(request_url, post_data)
-        response = json.loads(urllib2.urlopen(req).read())
-        return response
+        rq_url = fmt_noparams(
+            self.url,
+            'message_template_edit',
+            self.output
+        )
+        response = rq.get(rq_url, data=post_data)
+        return response.json()
 
-    def template_export(self, params, post_data = {}):
-        request_url = '%s&api_action=message_template_export&api_output=%s&%s' % (self.url, self.output, params)
-        response = json.loads(urllib2.urlopen(request_url).read())
-        return response
+    def template_export(self, params, post_data={}):
+        rq_url = fmt_params(
+            self.url,
+            'message_template_export',
+            self.output,
+            params
+        )
+        response = rq.get(rq_url)
+        return response.json()
 
     def template_import(self, params, post_data):
-        request_url = '%s&api_action=message_template_import&api_output=%s' % (self.url, self.output)
-        post_data = urllib.urlencode(post_data)
-        req = urllib2.Request(request_url, post_data)
-        response = json.loads(urllib2.urlopen(req).read())
-        return response
+        rq_url = fmt_noparams(
+            self.url,
+            'message_template_import',
+            self.output
+        )
+        response = rq.get(rq_url, data=post_data)
+        return response.json()
 
-    def template_list(self, params, post_data = {}):
-        request_url = '%s&api_action=message_template_list&api_output=%s&%s' % (self.url, self.output, params)
-        response = json.loads(urllib2.urlopen(request_url).read())
-        return response
+    def template_list(self, params, post_data={}):
+        rq_url = fmt_params(
+            self.url,
+            'message_template_list',
+            self.output,
+            params
+        )
+        response = rq.get(rq_url)
+        return response.json()
 
-    def template_view(self, params, post_data = {}):
-        request_url = '%s&api_action=message_template_view&api_output=%s&%s' % (self.url, self.output, params)
-        response = json.loads(urllib2.urlopen(request_url).read())
-        return response
+    def template_view(self, params, post_data={}):
+        rq_url = fmt_params(
+            self.url,
+            'message_template_view',
+            self.output,
+            params
+        )
+        response = rq.get(rq_url)
+        return response.json()
 
-    def view(self, params, post_data = {}):
-        request_url = '%s&api_action=message_view&api_output=%s&%s' % (self.url, self.output, params)
-        response = json.loads(urllib2.urlopen(request_url).read())
-        return response
+    def view(self, params, post_data={}):
+        rq_url = fmt_params(
+            self.url,
+            'message_view',
+            self.output,
+            params
+        )
+        response = rq.get(rq_url)
+        return response.json()
 
 
 """
@@ -137,7 +195,8 @@ if __name__ == '__main__':
 ##    template = {
 ##        'name': 'My New Template',
 ##        'subject': 'New Subject',
-##        'html': '<html><head><title>New Template</title></head><body><h1>This template was added via the API<h1></body></html></html>',
+##        'html': '<html><head><title>New Template</title></head><body><h1>
+##        This template was added via the API<h1></body></html></html>',
 ##        'template_scope': 'all',
 ##        'tags[]': 'Holiday',
 ##        'p[1]': 1
@@ -154,7 +213,8 @@ if __name__ == '__main__':
 ##    template = {
 ##        'id': 54,
 ##        'name': 'My New Template',
-##        'html': '<html><head><title>New Template</title></head><body><h1>This template was added via the API<h1></body></html></html>',
+##        'html': '<html><head><title>New Template</title></head><body><h1>
+##        This template was added via the API<h1></body></html></html>',
 ##        'p[1]': 1
 ##    }
 ##    print ac.api('message/template_edit', template)
@@ -177,14 +237,14 @@ if __name__ == '__main__':
 ##         'urls[0]': 'http://example.com/template.xml'
 ##     }
 ##    print ac.api('message/template_import', template)
-    
+
     ## template_view
 ##    print ac.api('message/template_view?id=54')
-    
+
     ## view
 ##    print ac.api('message/view?id=1')
 
     ## template_list
 ##    print ac.api('message/template_list?ids=76')
-    
+
 """

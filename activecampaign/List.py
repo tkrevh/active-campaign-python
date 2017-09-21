@@ -1,6 +1,10 @@
-from .ActiveCampaign import ActiveCampaign
-import json
-import urllib2, urllib
+from .ActiveCampaign import (
+    ActiveCampaign,
+    fmt_params,
+    fmt_noparams
+)
+import requests as rq
+
 
 class List(ActiveCampaign):
 
@@ -10,68 +14,112 @@ class List(ActiveCampaign):
         ActiveCampaign.__init__(self, url, api_key)
 
     def add(self, params, post_data):
-        request_url = '%s&api_action=list_add&api_output=%s' % (self.url, self.output)
-        post_data = urllib.urlencode(post_data)
-        req = urllib2.Request(request_url, post_data)
-        response = json.loads(urllib2.urlopen(req).read())
-        return response
+        rq_url = fmt_noparams(
+            self.url,
+            'list_add',
+            self.output
+        )
+        response = rq.get(rq_url, data=post_data)
+        return response.json()
 
-    def delete(self, params, post_data = {}):
-        request_url = '%s&api_action=list_delete&api_output=%s&%s' % (self.url, self.output, params)
-        response = json.loads(urllib2.urlopen(request_url).read())
-        return response
+    def delete(self, params, post_data={}):
+        rq_url = fmt_params(
+            self.url,
+            'list_delete',
+            self.output,
+            params
+        )
+        response = rq.get(rq_url)
+        return response.json()
 
-    def delete_list(self, params, post_data = {}):
-        request_url = '%s&api_action=list_delete_list&api_output=%s&%s' % (self.url, self.output, params)
-        response = json.loads(urllib2.urlopen(request_url).read())
-        return response
+    def delete_list(self, params, post_data={}):
+        rq_url = fmt_params(
+            self.url,
+            'list_delete_list',
+            self.output,
+            params
+        )
+        response = rq.get(rq_url)
+        return response.json()
 
     def edit(self, params, post_data):
-        request_url = '%s&api_action=list_edit&api_output=%s' % (self.url, self.output)
-        post_data = urllib.urlencode(post_data)
-        req = urllib2.Request(request_url, post_data)
-        response = json.loads(urllib2.urlopen(req).read())
-        return response
+        rq_url = fmt_noparams(
+            self.url,
+            'list_edit',
+            self.output
+        )
+        response = rq.get(rq_url, data=post_data)
+        return response.json()
 
     def field_add(self, params, post_data):
-        request_url = '%s&api_action=list_field_add&api_output=%s' % (self.url, self.output)
-        post_data = urllib.urlencode(post_data)
-        req = urllib2.Request(request_url, post_data)
-        response = json.loads(urllib2.urlopen(req).read())
-        return response
+        rq_url = fmt_noparams(
+            self.url,
+            'list_field_add',
+            self.output
+        )
+        response = rq.get(rq_url, data=post_data)
+        return response.json()
 
-    def field_delete(self, params, post_data = {}):
-        request_url = '%s&api_action=list_field_delete&api_output=%s&%s' % (self.url, self.output, params)
-        response = json.loads(urllib2.urlopen(request_url).read())
-        return response
+    def field_delete(self, params, post_data={}):
+        rq_url = fmt_params(
+            self.url,
+            'list_field_delete',
+            self.output,
+            params
+        )
+        response = rq.get(rq_url)
+        return response.json()
 
     def field_edit(self, params, post_data):
-        request_url = '%s&api_action=list_field_edit&api_output=%s' % (self.url, self.output)
-        post_data = urllib.urlencode(post_data)
-        req = urllib2.Request(request_url, post_data)
-        response = json.loads(urllib2.urlopen(req).read())
-        return response
+        rq_url = fmt_noparams(
+            self.url,
+            'list_field_edit',
+            self.output
+        )
+        response = rq.get(rq_url, data=post_data)
+        return response.json()
 
-    def field_view(self, params, post_data = {}):
-        request_url = '%s&api_action=list_field_view&api_output=%s&%s' % (self.url, self.output, params)
-        response = json.loads(urllib2.urlopen(request_url).read())
-        return response
+    def field_view(self, params, post_data={}):
+        rq_url = fmt_params(
+            self.url,
+            'list_field_view',
+            self.output,
+            params
+        )
+        response = rq.get(rq_url)
+        return response.json()
 
-    def list_(self, params, post_data = {}):
-        request_url = '%s&api_action=list_list&api_output=%s&%s' % (self.url, self.output, params)
-        response = json.loads(urllib2.urlopen(request_url).read())
-        return response
+    def list_(self, params, post_data={}):
+        rq_url = fmt_params(
+            self.url,
+            'list_list',
+            self.output,
+            params
+        )
+        response = rq.get(rq_url)
+        return response.json()
 
-    def paginator(self, params, post_data = {}):
-        request_url = '%s&api_action=list_paginator&api_output=%s&%s' % (self.url, self.output, params)
-        response = json.loads(urllib2.urlopen(request_url).read())
-        return response
+    def paginator(self, params, post_data={}):
+        rq_url = fmt_params(
+            self.url,
+            'list_paginator',
+            self.output,
+            params
+        )
+        response = rq.get(rq_url)
+        return response.json()
 
-    def view(self, params, post_data = {}):
-        request_url = '%s&api_action=list_view&api_output=%s&%s' % (self.url, self.output, params)
-        response = json.loads(urllib2.urlopen(request_url).read())
-        return response
-    
+    def view(self, params, post_data={}):
+        rq_url = fmt_params(
+            self.url,
+            'list_view',
+            self.output,
+            params
+        )
+        response = rq.get(rq_url)
+        return response.json()
+
+
 """
     ## add
     #list1 = {
@@ -81,7 +129,7 @@ class List(ActiveCampaign):
     #    'sender_city': 'Bucharest',
     #    'sender_zip': '123456',
     #    'sender_country': 'Romania'
-    #}    
+    #}
     #print ac.api('list/add', list1)
 
     ## delete
@@ -99,7 +147,7 @@ class List(ActiveCampaign):
     #    'sender_city': 'Bucharest',
     #    'sender_zip': '123456',
     #    'sender_country': 'Romania'
-    #}    
+    #}
     #print ac.api('list/edit', list1)
 
     ## field_add

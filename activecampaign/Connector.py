@@ -1,12 +1,12 @@
-import json
-import urllib2
+import requests as rq
+
 
 class Connector():
 
-    def __init__(self, url, api_key, api_user = '', api_pass = ''):
+    def __init__(self, url, api_key, api_user='', api_pass=''):
         self.output = 'json'
         self.base = ''
-        
+
         if url != 'https://www.activecampaign.com':
             # not set reseller
             self.base = '/admin'
@@ -15,15 +15,18 @@ class Connector():
             url = url[:-1]
 
         if api_key:
-            self.url = '%s%s/api.php?api_key=%s' % (url, self.base, api_key)
+            self.url = '{}{}/api.php?api_key={}'\
+                       .format(url, self.base, api_key)
         else:
-            self.url = '%s%s/api.php?api_user=%s&api_pass=%s' % (url, self.base, api_user, api_pass)
+            self.url = '{}{}/api.php?api_user={}&api_pass={}'\
+                       .format(url, self.base, api_user, api_pass)
         self.api_key = api_key
 
     def credentials_test(self):
-        test_url = '%s&api_action=group_view&api_output=%s&id=3' % (self.url, self.output)
-        jdata = json.loads(urllib2.urlopen(test_url).read())
-        return jdata['result_code'] == 1
+        test_url = '{}&api_action=group_view&api_output={}&id=3'\
+                       .format(self.url, self.output)
+        return rq.get(test_url).status_code == 200
+
 
 """
 if __name__ == '__main__':

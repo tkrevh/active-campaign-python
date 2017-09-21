@@ -1,1 +1,1 @@
-from .ActiveCampaign import ActiveCampaign
+from ActiveCampaign import ActiveCampaign

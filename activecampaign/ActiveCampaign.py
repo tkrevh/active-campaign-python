@@ -1,15 +1,20 @@
 from .Connector import Connector
 
+# formatters for making life easier, don't you want it that way?
+fmt_params = '{}&api_action={}&api_output={}&{}'.format
+fmt_noparams = '{}&api_action={}&api_output={}'.format
+
+
 class ActiveCampaign(Connector):
 
-    def __init__(self, url, api_key, api_user = '', api_pass = ''):
+    def __init__(self, url, api_key, api_user='', api_pass=''):
         self.url = url
         self.api_key = api_key
         self.URL = url
         self.APIKEY = api_key
         Connector.__init__(self, url, api_key, api_user, api_pass)
 
-    def api(self, path, post_data = {}):
+    def api(self, path, post_data={}):
         # IE: "subscriber/view"
         components = path.split('/')
         component = components[0]
@@ -39,10 +44,12 @@ class ActiveCampaign(Connector):
         elif component == 'singlesignon':
             component = 'auth'
 
-        class1 = '%s' % component.capitalize() # IE: "subscriber" becomes "Subscriber"
-        source_module = __import__(class1, globals(), locals(), [], -1) # import Subscriber
-        class1 = getattr(source_module, class1) # get Subscriber
-        class1 = class1(self.URL, self.APIKEY) # Subscriber()
+        # "subscriber" becomes "Subscriber"
+        class1 = '{}'.format(component.capitalize())
+        source_module = __import__(
+            class1, globals(), locals(), [], -1)  # import Subscriber
+        class1 = getattr(source_module, class1)  # get Subscriber
+        class1 = class1(self.URL, self.APIKEY)  # Subscriber()
         # subscriber.view()
 
         if method == 'list':
