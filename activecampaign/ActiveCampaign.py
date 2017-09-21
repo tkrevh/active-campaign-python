@@ -1,4 +1,4 @@
-from Connector import Connector
+from .Connector import Connector
 
 class ActiveCampaign(Connector):
 

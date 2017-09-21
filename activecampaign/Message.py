@@ -1,4 +1,4 @@
-from ActiveCampaign import ActiveCampaign
+from .ActiveCampaign import ActiveCampaign
 import json
 import urllib2, urllib
 import datetime
