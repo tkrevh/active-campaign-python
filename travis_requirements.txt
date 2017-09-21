@@ -1,9 +1,0 @@
-flask
-flask-restful
-querystring_parser
-sqlalchemy
-coverage==3.7.1
-sqlalchemy_utils
-pytest
-fake-factory
-coveralls
