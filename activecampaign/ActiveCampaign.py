@@ -47,7 +47,7 @@ class ActiveCampaign(Connector):
         # "subscriber" becomes "Subscriber"
         class1 = '{}'.format(component.capitalize())
         source_module = __import__(
-            class1, globals(), locals(), [], -1)  # import Subscriber
+            class1, globals(), locals(), [], 0)  # import Subscriber
         class1 = getattr(source_module, class1)  # get Subscriber
         class1 = class1(self.URL, self.APIKEY)  # Subscriber()
         # subscriber.view()
