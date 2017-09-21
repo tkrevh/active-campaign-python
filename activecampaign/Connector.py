@@ -1,5 +1,4 @@
 import json
-from Config import ACTIVECAMPAIGN_URL, ACTIVECAMPAIGN_API_KEY
 import urllib2
 
 class Connector():
@@ -26,6 +25,8 @@ class Connector():
         jdata = json.loads(urllib2.urlopen(test_url).read())
         return jdata['result_code'] == 1
 
+"""
 if __name__ == '__main__':
     c = Connector(ACTIVECAMPAIGN_URL,  ACTIVECAMPAIGN_API_KEY)
     print c.credentials_test()
+"""

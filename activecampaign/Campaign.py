@@ -1,4 +1,3 @@
-from Config import ACTIVECAMPAIGN_URL, ACTIVECAMPAIGN_API_KEY
 from ActiveCampaign import ActiveCampaign
 import simplejson as json
 import urllib2, urllib
@@ -108,6 +107,7 @@ class Campaign(ActiveCampaign):
         response = json.loads(urllib2.urlopen(request_url).read())
         return response
     
+"""
 if __name__ == '__main__':
     ac = ActiveCampaign(ACTIVECAMPAIGN_URL,  ACTIVECAMPAIGN_API_KEY)
 
@@ -184,3 +184,4 @@ if __name__ == '__main__':
 
     ## report_status
 ##    print ac.api('campaign/status?id=13&status=5')
+"""

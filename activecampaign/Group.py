@@ -1,5 +1,3 @@
-
-from Config import ACTIVECAMPAIGN_URL, ACTIVECAMPAIGN_API_KEY
 from ActiveCampaign import ActiveCampaign
 import json
 import urllib2, urllib
@@ -45,6 +43,7 @@ class Group(ActiveCampaign):
         response = json.loads(urllib2.urlopen(request_url).read())
         return response
 
+"""
 if __name__ == '__main__':
     ac = ActiveCampaign(ACTIVECAMPAIGN_URL,  ACTIVECAMPAIGN_API_KEY)
     
@@ -77,3 +76,4 @@ if __name__ == '__main__':
 
     ## view
     #print ac.api('group/view?id=7')
+"""

@@ -1,5 +1,3 @@
-
-from Config import ACTIVECAMPAIGN_URL, ACTIVECAMPAIGN_API_KEY
 from ActiveCampaign import ActiveCampaign
 import json
 import urllib2, urllib
@@ -93,6 +91,7 @@ class Message(ActiveCampaign):
         return response
 
 
+"""
 if __name__ == '__main__':
     ac = ActiveCampaign(ACTIVECAMPAIGN_URL,  ACTIVECAMPAIGN_API_KEY)
 
@@ -188,3 +187,4 @@ if __name__ == '__main__':
     ## template_list
 ##    print ac.api('message/template_list?ids=76')
     
+"""
