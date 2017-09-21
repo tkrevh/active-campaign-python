@@ -21,7 +21,7 @@ test_requirements = [
 
 setup(
     name='active-campaign-python',
-    version='0.5.3',
+    version='0.5.4',
     description="Python ActiveCampaign API client",
     long_description=readme,
     author="Dennis Durling",
