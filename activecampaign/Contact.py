@@ -48,7 +48,7 @@ class Contact(ActiveCampaign):
             'contact_edit',
             self.output
         )
-        response = rq.get(rq_url, data=post_data)
+        response = rq.post(rq_url, data=post_data)
         return response.json()
 
     def list_(self, params, post_data={}):
