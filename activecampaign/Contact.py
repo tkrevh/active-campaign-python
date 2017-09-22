@@ -19,7 +19,7 @@ class Contact(ActiveCampaign):
             'contact_add',
             self.output
         )
-        response = rq.get(rq_url, data=post_data)
+        response = rq.post(rq_url, data=post_data)
         return response.json()
 
     def delete_list(self, params, post_data={}):
@@ -90,7 +90,7 @@ class Contact(ActiveCampaign):
 """
 if __name__ == '__main__':
     ac = ActiveCampaign(ACTIVECAMPAIGN_URL,  ACTIVECAMPAIGN_API_KEY)
-    
+
     ## add
 ##    user = {
 ##        'username': 'johnsmith',
@@ -100,15 +100,15 @@ if __name__ == '__main__':
 ##        'password_r': 'mypwd',
 ##        'email': 'person@example.com',
 ##        'group[3]' : 3
-##    }    
+##    }
 ##    print ac.api('user/add', user)
-    
+
     ## delete_list
 ##    print ac.api('user/delete_list?ids=3,4')
-    
+
     ## delete
 ##    print ac.api('user/delete?id=5')
-    
+
     ## edit
 ##    user = {
 ##        'username': 'johnsmith',
@@ -119,22 +119,22 @@ if __name__ == '__main__':
 ##        'email': 'person@example.com',
 ##        'group[3]' : 3,
 ##        'id' : 6
-##    }    
+##    }
 ##    print ac.api('user/edit', user)
-    
+
     ## list
 ##    print ac.api('user/list?ids=1,6')
-    
+
     ## me
 ##    print ac.api('user/me')
-    
+
     ## view email
 ##    print ac.api('user/view?email=person@example.com')
-    
+
     ## view username
 ##    print ac.api('user/view?username=johnsmith')
-    
+
     ## view id
 ##    print ac.api('user/view?id=1')
-    
+
 """
