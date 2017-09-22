@@ -38,7 +38,7 @@ class Account(ActiveCampaign):
             'account_edit',
             self.output
         )
-        response = rq.get(rq_url)
+        response = rq.post(rq_url, data=post_data)
         return response.json()
 
     def list_(self, params, post_data={}):
