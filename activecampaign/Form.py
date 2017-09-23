@@ -20,7 +20,7 @@ class Form(ActiveCampaign):
             self.output
         )
         response = rq.get(rq_url, data=post_data)
-        return response.json()
+        return response
 
     def html(self, params, post_data={}):
         rq_url = fmt_params(
@@ -30,7 +30,7 @@ class Form(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
 
 """

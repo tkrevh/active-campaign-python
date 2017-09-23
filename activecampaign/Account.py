@@ -20,7 +20,7 @@ class Account(ActiveCampaign):
             self.output
         )
         response = rq.post(rq_url, data=post_data)
-        return response.json()
+        return response
 
     def cancel(self, params, post_data={}):
         rq_url = fmt_params(
@@ -30,7 +30,7 @@ class Account(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def edit(self, params, post_data={}):
         rq_url = fmt_noparams(
@@ -39,7 +39,7 @@ class Account(ActiveCampaign):
             self.output
         )
         response = rq.post(rq_url, data=post_data)
-        return response.json()
+        return response
 
     def list_(self, params, post_data={}):
         rq_url = fmt_params(
@@ -49,7 +49,7 @@ class Account(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def name_check(self, params, post_data={}):
         rq_url = fmt_params(
@@ -59,7 +59,7 @@ class Account(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def plans(self, params, post_data={}):
         rq_url = fmt_params(
@@ -69,7 +69,7 @@ class Account(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def status(self, params, post_data={}):
         rq_url = fmt_params(
@@ -79,7 +79,7 @@ class Account(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def status_set(self, params, post_data={}):
         rq_url = fmt_params(
@@ -89,7 +89,7 @@ class Account(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def view(self, params, post_data={}):
         rq_url = fmt_noparams(
@@ -98,7 +98,7 @@ class Account(ActiveCampaign):
             self.output
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
 
 """

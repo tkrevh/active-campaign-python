@@ -20,7 +20,7 @@ class Campaign(ActiveCampaign):
             self.output
         )
         response = rq.post(rq_url, data=post_data)
-        return response.json()
+        return response
 
     def delete(self, params, post_data={}):
         rq_url = fmt_params(
@@ -30,7 +30,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def delete_list(self, params, post_data={}):
         rq_url = fmt_params(
@@ -40,7 +40,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def list_(self, params, post_data={}):
         rq_url = fmt_params(
@@ -50,7 +50,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def paginator(self, params, post_data={}):
         rq_url = fmt_params(
@@ -60,7 +60,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def report_bounce_list(self, params, post_data={}):
         rq_url = fmt_params(
@@ -70,7 +70,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def report_bounce_totals(self, params, post_data={}):
         rq_url = fmt_params(
@@ -80,7 +80,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def report_forward_list(self, params, post_data={}):
         rq_url = fmt_params(
@@ -90,7 +90,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def report_forward_totals(self, params, post_data={}):
         rq_url = fmt_params(
@@ -100,7 +100,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def report_link_list(self, params, post_data={}):
         rq_url = fmt_params(
@@ -110,7 +110,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def report_link_totals(self, params, post_data={}):
         rq_url = fmt_params(
@@ -120,7 +120,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def report_open_list(self, params, post_data={}):
         rq_url = fmt_params(
@@ -130,7 +130,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def report_open_totals(self, params, post_data={}):
         rq_url = fmt_params(
@@ -140,7 +140,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def report_totals(self, params, post_data={}):
         rq_url = fmt_params(
@@ -150,7 +150,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def report_unopen_list(self, params, post_data={}):
         rq_url = fmt_params(
@@ -160,7 +160,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def report_unsubscription_list(self, params, post_data={}):
         rq_url = fmt_params(
@@ -170,7 +170,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def report_unsubscription_totals(self, params, post_data={}):
         rq_url = fmt_params(
@@ -180,7 +180,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def send(self, params, post_data={}):
         rq_url = fmt_params(
@@ -190,7 +190,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def status(self, params, post_data={}):
         rq_url = fmt_params(
@@ -200,7 +200,7 @@ class Campaign(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
 
 """

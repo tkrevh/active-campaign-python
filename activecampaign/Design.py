@@ -29,7 +29,7 @@ class Design(ActiveCampaign):
             self.output
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
 
 """

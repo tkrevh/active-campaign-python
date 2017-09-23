@@ -20,7 +20,7 @@ class User(ActiveCampaign):
             self.output
         )
         response = rq.get(rq_url, data=post_data)
-        return response.json()
+        return response
 
     def delete_list(self, params, post_data={}):
         rq_url = fmt_params(
@@ -30,7 +30,7 @@ class User(ActiveCampaign):
             params
         )
         response = rq.get(rq_url, data=post_data)
-        return response.json()
+        return response
 
     def delete(self, params, post_data={}):
         rq_url = fmt_params(
@@ -40,7 +40,7 @@ class User(ActiveCampaign):
             params
         )
         response = rq.get(rq_url, data=post_data)
-        return response.json()
+        return response
 
     def edit(self, params, post_data):
         rq_url = fmt_noparams(
@@ -49,7 +49,7 @@ class User(ActiveCampaign):
             self.output
         )
         response = rq.get(rq_url, data=post_data)
-        return response.json()
+        return response
 
     def list_(self, params, post_data={}):
         rq_url = fmt_params(
@@ -59,7 +59,7 @@ class User(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def me(self, params, post_data={}):
         rq_url = fmt_noparams(
@@ -68,7 +68,7 @@ class User(ActiveCampaign):
             self.output
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
     def view(self, params, post_data={}):
         if params.startswith('email='):
@@ -84,7 +84,7 @@ class User(ActiveCampaign):
             params
         )
         response = rq.get(rq_url)
-        return response.json()
+        return response
 
 
 """
