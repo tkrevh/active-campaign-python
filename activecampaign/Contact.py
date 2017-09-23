@@ -13,61 +13,92 @@ class Contact(ActiveCampaign):
         self.api_key = api_key
         ActiveCampaign.__init__(self, url, api_key)
 
-    def add(self, params, post_data):
-        rq_url = fmt_noparams(
-            self.url,
-            'contact_add',
-            self.output
-        )
+    def add(self, params, post_data={}):
+        if params:
+            rq_url = fmt_params(self.url, 'contact_add', self.output, params)
+        else:
+            rq_url = fmt_noparams(self.url, 'contact_add',
+                                  self.output)
         response = rq.post(rq_url, data=post_data)
         return response.json()
 
-    def delete_list(self, params, post_data={}):
-        rq_url = fmt_params(
-            self.url,
-            'contact_delete_list',
-            self.output,
-            params
-        )
+    def automation_list(self, params):
+        rq_url = fmt_params(self.url, 'contact_add',
+                            self.output, params)
+        response = rq.post(rq_url)
+        return response.json()
+
+    def delete_list(self, params):
+        rq_url = fmt_params(self.url, 'contact_delete_list',
+                            self.output, params)
         response = rq.get(rq_url)
         return response.json()
 
-    def delete(self, params, post_data={}):
-        rq_url = fmt_params(
-            self.url,
-            'contact_delete',
-            self.output,
-            params
-        )
+    def delete(self, params):
+        rq_url = fmt_params(self.url, 'contact_delete',
+                            self.output, params)
         response = rq.get(rq_url)
         return response.json()
 
-    def edit(self, params, post_data):
-        rq_url = fmt_noparams(
-            self.url,
-            'contact_edit',
-            self.output
-        )
+    def edit(self, params, post_data={}):
+        rq_url = fmt_noparams(self.url, 'contact_edit', self.output)
         response = rq.post(rq_url, data=post_data)
         return response.json()
 
-    def list_(self, params, post_data={}):
-        rq_url = fmt_params(
-            self.url,
-            'contact_list',
-            self.output,
-            params
-        )
+    def list_(self, params):
+        rq_url = fmt_params(self.url, 'contact_list',
+                            self.output, params)
         response = rq.get(rq_url)
         return response.json()
 
-    def me(self, params, post_data={}):
-        rq_url = fmt_noparams(
-            self.url,
-            'contact_me',
-            self.output
-        )
+    def note_add(self, params, post_data={}):
+        rq_url = fmt_params(self.url, 'contact_note_add',
+                            self.output, params)
+        response = rq.post(rq_url, data=post_data)
+        return response.json()
+
+    def note_edit(self, params, post_data={}):
+        rq_url = fmt_params(self.url, 'contact_note_edit',
+                            self.output, params)
+        response = rq.post(rq_url, data=post_data)
+        return response.json()
+
+    def note_delete(self, params):
+        rq_url = fmt_noparams(self.url, 'contact_note_delete', self.output)
+        response = rq.post(rq_url)
+        return response.json()
+
+    def paginator(self, params):
+        rq_url = fmt_params(self.url, 'contact_paginator',
+                            self.output, params)
         response = rq.get(rq_url)
+        return response.json()
+
+    def sync(self, params, post_data):
+        if params:
+            rq_url = fmt_params(self.url, 'contact_sync',
+                                self.output, params)
+        else:
+            rq_url = fmt_noparams(self.url, 'contact_sync', self.output)
+        response = rq.post(rq_url, data=post_data)
+        return response.json()
+
+    def tag_add(self, params, post_data={}):
+        if params:
+            rq_url = fmt_params(self.url, 'contact_tag_add',
+                                self.output, params)
+        else:
+            rq_url = fmt_noparams(self.url, 'contact_tag_add', self.output)
+        response = rq.post(rq_url, data=post_data)
+        return response.json()
+
+    def tag_remove(self, params, post_data={}):
+        if params:
+            rq_url = fmt_params(self.url, 'contact_tag_remove',
+                                self.output, params)
+        else:
+            rq_url = fmt_noparams(self.url, 'contact_tag_remove', self.output)
+        response = rq.post(rq_url, data=post_data)
         return response.json()
 
     def view(self, params, post_data={}):
@@ -77,12 +108,10 @@ class Contact(ActiveCampaign):
             action = 'contact_view_hash'
         elif params.startswith('id='):
             action = 'contact_view'
-        rq_url = fmt_params(
-            self.url,
-            action,
-            self.output,
-            params
-        )
+        else:
+            action = 'contact_view'
+        rq_url = fmt_params(self.url, action,
+                            self.output, params)
         response = rq.get(rq_url)
         return response.json()
 
@@ -136,5 +165,15 @@ if __name__ == '__main__':
 
     ## view id
 ##    print ac.api('user/view?id=1')
+
+    ## sync
+##    contact = {
+##        'email': 'person@example.com',
+##        'first_name': 'John',
+##        'last_name': 'Smith',
+##        'p[1]': 1,
+##        'status[1]': 1,
+##    }
+##    print ac.api('contact/sync', contact)
 
 """

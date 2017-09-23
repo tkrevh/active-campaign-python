@@ -82,8 +82,8 @@ if __name__ == '__main__':
     #    'descript' : 'This group is created from API',
     #    'lists[1]' : 1,
     #    'pg_form_edit' : 1,
-    #    'pg_subscriber_add' : 1,
-    #    'pg_subscriber_delete' : 0
+    #    'pg_contact_add' : 1,
+    #    'pg_contact_delete' : 0
     # }
     # print ac.api('group/add', group)
 

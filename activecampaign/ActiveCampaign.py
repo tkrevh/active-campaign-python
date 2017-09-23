@@ -22,19 +22,19 @@ class ActiveCampaign(Connector):
         Connector.__init__(self, url, api_key, api_user, api_pass)
 
     def api(self, path, post_data={}):
-        # IE: "subscriber/view"
+        # IE: "contact/view"
         components = path.split('/')
         component = components[0]
 
         if '?' in components[1]:
             # query params appended to method
-            # IE: subscriber/edit?overwrite=0
+            # IE: contact/edit?overwrite=0
             method_arr = components[1].split('?')
             method = method_arr[0]
             params = method_arr[1]
         else:
             # just a method provided
-            # IE: "subscriber/view
+            # IE: "contact/view
             if components[1]:
                 method = components[1]
                 params = ''
@@ -46,12 +46,12 @@ class ActiveCampaign(Connector):
             # reserved word
             component = 'design'
         elif component == 'sync':
-            component = 'subscriber'
+            component = 'contact'
             method = 'sync'
         elif component == 'singlesignon':
             component = 'auth'
 
-        # "subscriber" becomes "Subscriber"
+        # "contact" becomes "Contact"
         class1 = '{}'.format(component.capitalize())
         class1 = get_mod(class1, 'activecampaign')
         class1 = class1(self.URL, self.APIKEY)  # Subscriber()
