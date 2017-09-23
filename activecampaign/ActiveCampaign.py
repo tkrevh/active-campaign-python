@@ -61,5 +61,8 @@ class ActiveCampaign(Connector):
             method = 'list_'
 
         if method in dir(class1):
-            return getattr(class1, method)(params, post_data)
+            if post_data:
+                return getattr(class1, method)(params, post_data)
+            else:
+                return getattr(class1, method)(params)
         return None
