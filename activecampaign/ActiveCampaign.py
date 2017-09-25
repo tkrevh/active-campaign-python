@@ -67,7 +67,7 @@ class ActiveCampaign(Connector):
                 return getattr(class1, method)(params)
         return None
 
-    ## extra methods I created for shorthand scripting
+    # extra methods I created for shorthand scripting
     # get
     def _get_contact_by_id(self, cid=None):
         """Get a contact by ID
@@ -106,7 +106,7 @@ class ActiveCampaign(Connector):
         """
         response = self.api('contact/ad', post_data=data)
         return response
-    ## end contact section
+    # end contact section
 
     # create
     def _add_tags_by_id(self, cid=None, tags=None):
@@ -119,8 +119,8 @@ class ActiveCampaign(Connector):
         if not isinstance(tags, list):
             raise AttributeError("tags must be a list of strings")
         response = self.api('contact/tag_add?id={}'.format(cid),
-                            post_data={'tags':tags})
-        return self._response
+                            post_data={'tags': tags})
+        return response
 
     # delete
     def _delete_tags_by_id(self, cid=None, tags=None):
@@ -133,8 +133,8 @@ class ActiveCampaign(Connector):
         if not isinstance(tags, list):
             raise AttributeError("tags must be a list of strings")
         response = self.api('contact/tag_remove?id={}'.format(cid),
-                            post_data={'tags':tags})
-        return self._response
+                            post_data={'tags': tags})
+        return response
 
     def _add_note_by_id(self, cid=None, note=""):
         """ Add a Note for a contact/company
@@ -143,7 +143,7 @@ class ActiveCampaign(Connector):
             cid:str     contact/susbscriber ID
             note:str    a note
         """
-        data = {"id": cid, "note":note}
+        data = {"id": cid, "note": note}
         response = self.api('contact/note_add?id={}'.format(cid),
                             post_data=data)
         return response
@@ -157,7 +157,7 @@ class ActiveCampaign(Connector):
         """
         response = self.api('contact/note_delete?noteid={}'.format(nid))
         return response
-    ## end contact components (properties, tags...)
+    # end contact components (properties, tags...)
 
     # list contacts
     def _list_contacts(self):
