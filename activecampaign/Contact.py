@@ -15,7 +15,8 @@ class Contact(ActiveCampaign):
 
     def add(self, params, post_data={}):
         if params:
-            rq_url = fmt_params(self.url, 'contact_add', self.output, params)
+            rq_url = fmt_params(self.url, 'contact_add',
+                                self.output, params)
         else:
             rq_url = fmt_noparams(self.url, 'contact_add',
                                   self.output)
@@ -64,7 +65,8 @@ class Contact(ActiveCampaign):
         return response
 
     def note_delete(self, params):
-        rq_url = fmt_noparams(self.url, 'contact_note_delete', self.output)
+        rq_url = fmt_noparams(self.url, 'contact_note_delete',
+                              self.output)
         response = rq.post(rq_url)
         return response
 
@@ -88,7 +90,8 @@ class Contact(ActiveCampaign):
             rq_url = fmt_params(self.url, 'contact_tag_add',
                                 self.output, params)
         else:
-            rq_url = fmt_noparams(self.url, 'contact_tag_add', self.output)
+            rq_url = fmt_noparams(self.url, 'contact_tag_add',
+                                  self.output)
         response = rq.post(rq_url, data=post_data)
         return response
 
@@ -97,7 +100,8 @@ class Contact(ActiveCampaign):
             rq_url = fmt_params(self.url, 'contact_tag_remove',
                                 self.output, params)
         else:
-            rq_url = fmt_noparams(self.url, 'contact_tag_remove', self.output)
+            rq_url = fmt_noparams(self.url, 'contact_tag_remove',
+                                  self.output)
         response = rq.post(rq_url, data=post_data)
         return response
 
