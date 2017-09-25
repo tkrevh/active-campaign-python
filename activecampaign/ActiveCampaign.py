@@ -158,3 +158,19 @@ class ActiveCampaign(Connector):
         response = self.api('contact/note_delete?noteid={}'.format(nid))
         return response
     ## end contact components (properties, tags...)
+
+    # list contacts
+    def _list_contacts(self):
+        """List all contacts
+
+        """
+        response = self.api('contact/list?ids=all')
+        return response
+
+    # list organizations, not very usefull but still
+    def _list_orgs(self):
+        """List all organizations
+
+        """
+        response = self.api('organization/list')
+        return response
