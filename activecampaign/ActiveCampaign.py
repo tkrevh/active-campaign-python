@@ -19,7 +19,7 @@ class ActiveCampaign(Connector):
         self.api_key = api_key
         self.URL = url
         self.APIKEY = api_key
-        Connector.__init__(self, url, api_key, api_user, api_pass)
+        super().__init__(url, api_key, api_user, api_pass)
 
     def api(self, path, post_data={}):
         # IE: "contact/view"
