@@ -109,31 +109,27 @@ class ActiveCampaign(Connector):
     # end contact section
 
     # create
-    def _add_tags_by_id(self, cid=None, tags=None):
+    def _add_tags_by_id(self, cid=None, tag=None):
         """ Add tags by id for company/contact
 
         Arguments:
             cid:str         contact/susbscriber ID
             tags:list(str)  list of tags as strings
         """
-        if not isinstance(tags, list):
-            raise AttributeError("tags must be a list of strings")
-        response = self.api('contact/tag_add?id={}'.format(cid),
-                            post_data={'tags': tags})
+        response = self.api('contact/tag_add',
+                            post_data={'id': cid, 'tags':tag})
         return response
 
     # delete
-    def _delete_tags_by_id(self, cid=None, tags=None):
+    def _delete_tags_by_id(self, cid=None, tag=None):
         """ Delete a tag by a contact/susbscriber ID
 
         Arguments:
             cid:str         contact/susbscriber ID
             tags:list(str)  list of tags as strings
         """
-        if not isinstance(tags, list):
-            raise AttributeError("tags must be a list of strings")
-        response = self.api('contact/tag_remove?id={}'.format(cid),
-                            post_data={'tags': tags})
+        response = self.api('contact/tag_remove',
+                            post_data={'id': cid, 'tags':tag})
         return response
 
     def _add_note_by_id(self, cid=None, note=""):
