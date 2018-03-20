@@ -1,7 +1,7 @@
 import requests as rq
 
 
-class Connector():
+class Connector(object):
 
     def __init__(self, url, api_key, api_user='', api_pass=''):
         self.output = 'json'
