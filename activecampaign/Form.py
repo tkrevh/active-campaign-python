@@ -11,7 +11,7 @@ class Form(ActiveCampaign):
     def __init__(self, url, api_key):
         self.url = url
         self.api_key = api_key
-        super().__init__(url, api_key)
+        super(Form, self).__init__(url, api_key)
 
     def getforms(self, params, post_data={}):
         rq_url = fmt_noparams(
